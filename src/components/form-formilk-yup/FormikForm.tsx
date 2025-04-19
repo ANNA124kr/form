@@ -1,9 +1,11 @@
-import { FormikFormData } from "../../interface.form";
-import { useFormik } from 'formik';
 import * as Yup from 'yup'
 import AppInput from "../app-input/AppInput";
-import ErrorMassage from "../error-message/ErrorMassage";
+import SendIcon from '@mui/icons-material/Send';
 import AppTextArea from "../app-textarea/AppTextArea";
+import { styles } from "./FormikForm.style";
+import { useFormik } from 'formik';
+import { Box, Button } from "@mui/material";
+import { FormikFormData } from "../../interface.form";
 
 const initialValues: FormikFormData = {
   name: '',
@@ -29,10 +31,20 @@ const FormikForm: React.FC = () => {
     validationSchema: validationSchema,
     onSubmit: (values) =>{
       console.log(values);
+    },
+    onReset: (values, actions) => {
+      console.log('Form reset! Current values:', values);
+      actions.setSubmitting(false);
     }
   })
   return(
-    <form onSubmit={formik.handleSubmit}>
+    <Box
+      sx={styles.container}
+      component='form'
+      onSubmit={formik.handleSubmit}
+      onReset={formik.handleReset}
+      noValidate
+    >
       <AppInput 
         label="Name"
         id="name"
@@ -40,10 +52,9 @@ const FormikForm: React.FC = () => {
         type="text"
         onChange={formik.handleChange}
         value={formik.values.name}
+        error={formik.touched.name && Boolean(formik.errors.name)}
+        helperText={formik.touched.name && formik.errors.name}
       />
-      {formik.touched.name && formik.errors.name ? (
-        <ErrorMassage message={formik.errors.name}/>
-        ) : null}
       <AppInput 
         label="Email"
         id="email"
@@ -51,10 +62,9 @@ const FormikForm: React.FC = () => {
         type="email"
         onChange={formik.handleChange}
         value={formik.values.email}
+        error = {formik.touched.email && Boolean(formik.errors.email)}
+        helperText = {formik.touched.email && formik.errors.email}
       />
-      {formik.touched.email && formik.errors.email ? (
-        <ErrorMassage message={formik.errors.email}/>
-        ) : null}
       <AppInput 
         label="Phone number"
         id="phone"
@@ -62,17 +72,8 @@ const FormikForm: React.FC = () => {
         type="phone"
         onChange={formik.handleChange}
         value={formik.values.phone}
-      />
-      {formik.touched.phone && formik.errors.phone ? (
-        <ErrorMassage message={formik.errors.phone}/>
-        ) : null}
-      <AppInput 
-        label="Comments"
-        id="description"
-        name="description"
-        type="text"
-        onChange={formik.handleChange}
-        value={formik.values.description}
+        error = {formik.touched.phone && Boolean(formik.errors.phone)}
+        helperText = {formik.touched.phone && formik.errors.phone}
       />
       <AppTextArea
         label="Tell us your story"
@@ -81,10 +82,26 @@ const FormikForm: React.FC = () => {
         cols={33}
         onChange={formik.handleChange}
         value={formik.values.description}
-        text="Your comments"
       />
-      <button type="submit" >Send</button>
-    </form>
+      <Box
+        sx={styles.buttonsContainer}>
+        <Button
+          type="reset"
+          variant="outlined"
+          sx={styles.buttonReset}
+        >
+          Clean
+        </Button>
+        <Button 
+          type="submit"
+          variant="contained"
+          sx={styles.buttonSubmit}
+          endIcon = {<SendIcon/>}
+        >
+          Send
+        </Button>
+      </Box>
+    </Box>
   )
 }
 

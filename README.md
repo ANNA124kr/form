@@ -1,50 +1,81 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Form based on Formik + Yup
 
-Currently, two official plugins are available:
+React application implementing a feedback form
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## Table of Contents
+1. [Introduction](#introduction)
+2. [Features](#features)
+3. [Technologies Used](#technologies-used)
+4. [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+    - [Running the App](#running-the-app)
+5. [Tasks in progress](#tasks-in-progress)
+8. [Contact Information](#contact-information)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+---
 
-- Configure the top-level `parserOptions` property like this:
+## Introduction
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+ The application view
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+---
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Features
+- implement form by useing Formik library
+- Modular components for reusability.
+- State management with React hooks.
+- Validation by Yup library
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+---
+
+## Technologies Used
+- **React**: a popular JavaScript library for building user interfaces
+- **TypeScript**: For type-safe development
+- **Formik**: popular open-source library for handling forms in React applications
+- **Yup**: popular open-source library for validation forms in React applications
+- **Styled Components**: MUI library for styling 
+
+---
+
+## Getting Started
+
+### Prerequisites
+Make sure you have the following installed on your system:
+- **Node.js** (v14 or higher)
+- **npm** or **yarn**
+
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/ANNA124kr/form.git
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+   Or, if you're using yarn:
+   ```bash
+   yarn install
+   ```
+
+### Running the App
+   ```bash
+   npm run dev
+   ```
+
+## Tasks in progress
+1. Fix validation
+2. Store data with Redux
+3. Opening a pop-up modal with all data entered by the user
+4. UI Response to user 
+
+---
+
+## Contact Information
+For questions, feedback, or collaboration, feel free to reach out:
+- **GitHub**: [ANNA124kr](https://github.com/ANNA124kr)
+- **Linkdin**: https://www.linkedin.com/in/anna-kravchuk-467716276/
